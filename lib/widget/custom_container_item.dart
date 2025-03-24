@@ -4,9 +4,9 @@ import 'package:notein/Model/model_color.dart';
 
 import 'customText.dart';
 
-class CustomContainerInfo extends StatelessWidget {
+class CustomContainerItem extends StatelessWidget {
  final ModelColor colorMadel;
-   const CustomContainerInfo({
+   const CustomContainerItem({
     super.key,
     required this.colorMadel,
 
@@ -25,24 +25,27 @@ class CustomContainerInfo extends StatelessWidget {
         children: [
           ListTile(
             title: Padding(
-              padding: const EdgeInsets.only(bottom: 16),
-              child: CustomText(text: 'Flutter tips',fontSize: 28),
+              padding: const EdgeInsets.only(bottom: 14),
+              child: CustomText(text: 'Flutter tips',fontSize: 26),
             ),
             subtitle: CustomText(
-              text: 'Build your career with Amgad Emad',
+              text: 'Build your career with Amgad Emad ',
               maxLine: null,
-              fontSize: 19,
+              fontSize: 16,
               color: Colors.black.withOpacity(0.4),
             ),
             trailing:IconButton(
               onPressed: (){},
-              icon: Icon(Icons.delete,size: 32,),
+              icon: const Icon(Icons.delete,size: 32,),
               color: Colors.black,
               ),
           ),
           Padding(
-              padding: EdgeInsets.only(right: 24),
-              child: CustomText(text: 'May 23/3/2025',fontSize: 15,color: Colors.black.withOpacity(0.4),))
+              padding: const EdgeInsets.only(right: 24),
+              child: CustomText(
+                text: 'May 23/3/2025',
+                fontSize: 14,
+                color: Colors.black.withOpacity(0.4),))
         ],
       ),
     );

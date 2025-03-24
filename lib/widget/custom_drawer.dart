@@ -12,15 +12,15 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeDataChange = Provider.of<ThemeDataChange>(context);
-    return Drawer(
+    return  Drawer(
       backgroundColor: Theme.of(context).drawerTheme.backgroundColor,
       child: ListView(
         children: [
           SwitchListTile(
             activeColor: Colors.green,
             title: themeDataChange.isDark
-                ? CustomText(text: 'الوضع المظلم',color: Colors.white,)
-                : CustomText(text: 'الوضع الفاتح',),
+                ?  const CustomText(text: 'الوضع المظلم',color: Colors.white,)
+                :  const CustomText(text: 'الوضع الفاتح',),
             value: themeDataChange.isDark,
             onChanged: (value) {
               themeDataChange.isDark = value;
@@ -28,7 +28,7 @@ class CustomDrawer extends StatelessWidget {
               print(themeDataChange.isDark);
 
             },),
-          ListTile(
+           ListTile(
             title: CustomText(
               text: 'مساعدة / تعليق',
               color:  Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),

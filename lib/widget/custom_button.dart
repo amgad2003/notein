@@ -15,16 +15,16 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap ,
-      child: Container(
+      child:  Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.all(5),
+          margin:const  EdgeInsets.all(5),
           height: 55,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               color: Colors.greenAccent,
               borderRadius: BorderRadius.circular(8)
           ),
-          child: CustomText(text: 'Add',fontSize: 22,fontWeight: FontWeight.w700,)
+          child:const CustomText(text: 'Add',fontSize: 22,fontWeight: FontWeight.w700,)
       ),
     );
   }

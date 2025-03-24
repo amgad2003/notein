@@ -6,13 +6,13 @@ class CustomTextField extends StatelessWidget {
 
   final int maxLine;
   final String labelText;
-  final void Function(String?) onSaved;
+  final void Function(String?)? onSaved;
 
   const CustomTextField({
     super.key,
     this.maxLine = 1,
     this.labelText = '',
-    required this.onSaved,
+    this.onSaved,
   });
 
 // Decoration Text Field *************
@@ -26,14 +26,16 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      style: TextStyle(color: Colors.white),
+    return  TextFormField(
+      style:  TextStyle(
+          color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black
+      ),
       maxLines: maxLine,
-        decoration: InputDecoration(
+        decoration:  InputDecoration(
           focusedBorder: buildOutlineInputBorder(color: Colors.blueGrey),
           enabledBorder: buildOutlineInputBorder(color:  Colors.blueGrey),
           border: buildOutlineInputBorder(color: Colors.blueGrey),
-          label: CustomText(
+          label:  CustomText(
             text: labelText,
             color: Colors.greenAccent,
             fontSize: 18,

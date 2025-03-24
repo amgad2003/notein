@@ -29,20 +29,20 @@ class _AddNoteState extends State<AddNote> {
           autovalidateMode: autoValidateMode,
           child: Column(
             children: [
-              SizedBox(height: 30,),
+              const SizedBox(height: 80,),
               CustomTextField(
                 labelText: 'Title',
                 onSaved: (p0) {
                   title = p0;
-                },),
-              SizedBox(height: 15,),
+                }),
+              const SizedBox(height: 15,),
               CustomTextField(
                 maxLine: 7,
                 labelText: 'Content',
                 onSaved: (p0) {
                   subTitle = p0;
                 },),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               CustomButton(
                 onTap: () {
                   if(formKey.currentState!.validate()){

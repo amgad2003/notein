@@ -12,13 +12,14 @@ class CustomFlatActionButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {
         showModalBottomSheet(
-            backgroundColor: Color(0xFF2c2c2c),
+          isScrollControlled: true,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             context: context, builder: (context) {
-          return AddNote();
+          return const AddNote();
         });
       },
-      shape: CircleBorder(),
-      backgroundColor: Color(0xFF3eb0a0),
-      child: Icon(Icons.add,),);
+      shape: const CircleBorder(),
+      backgroundColor:const Color(0xFF3eb0a0),
+      child: const Icon(Icons.add,color: Color(0xFFf2f2f2),),);
   }
 }

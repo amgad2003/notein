@@ -20,13 +20,13 @@ class CustomAppBarRow extends StatelessWidget {
       children: [
         CustomText(
           text: text,
-          fontSize: 35,
+          fontSize: 32,
           color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black
         ),
         InkWell(
           onTap: onTap,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+            padding:const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(15)
@@ -34,7 +34,7 @@ class CustomAppBarRow extends StatelessWidget {
             child: Icon(
               icon,
               color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,
-              size: 30,
+              size: 25,
             ),
           ),
         )

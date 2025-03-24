@@ -4,7 +4,7 @@ import 'package:notein/View/edit_view.dart';
 import 'package:notein/widget/custom_appbar.dart';
 import 'package:notein/widget/custom_drawer.dart';
 import 'package:notein/widget/custom_float_action_botton.dart';
-import '../widget/custom_container_info.dart';
+import '../widget/custom_container_item.dart';
 
 class HomeView extends StatefulWidget {
    const HomeView({super.key});
@@ -38,22 +38,23 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: CustomDrawer(),
+      drawer: const CustomDrawer(),
       appBar: buildAppBar(),
-      floatingActionButton: CustomFlatActionButton(),
+      floatingActionButton:const CustomFlatActionButton(),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
+        padding:const EdgeInsets.symmetric(horizontal: 20),
+        child:  Column(
           children: [
-            SizedBox(height: 10),
-            Expanded(child: ListView.builder(
+            const SizedBox(height: 10),
+            Expanded(
+                child: ListView.builder(
               itemCount: listColor.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                   child: InkWell(
                       onTap: navigator,
-                      child: CustomContainerInfo(colorMadel: listColor[index])),
+                      child:  CustomContainerItem(colorMadel: listColor[index])),
                 );
               }))
           ],

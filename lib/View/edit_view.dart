@@ -18,20 +18,20 @@ class EditView extends StatelessWidget {
         padding: const  EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
-            SizedBox(height: 10,),
-           // CustomTextField(labelText: 'Title',),
-            SizedBox(height: 10,),
+           const SizedBox(height: 10,),
+            const CustomTextField(labelText: 'Title',),
+            const SizedBox(height: 10,),
             Expanded(
                 child: TextField(
                   maxLines: 7,
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: BorderSide(color: Colors.blueGrey,width: 1.0),
+                        borderSide: const BorderSide(color: Colors.blueGrey,width: 1.0),
                     ),
                     focusedBorder:  OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(color: Colors.blueGrey,width: 1.0),
+                      borderSide: const BorderSide(color: Colors.blueGrey,width: 1.0),
                     ),
                   )
                 )
