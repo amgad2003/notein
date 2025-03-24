@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:notein/Model/model_color.dart';
 import 'package:notein/View/edit_view.dart';
-import 'package:notein/widget/custom_button.dart';
-import 'package:notein/widget/custom_row_app_bar.dart';
+import 'package:notein/widget/custom_appbar.dart';
+import 'package:notein/widget/custom_drawer.dart';
+import 'package:notein/widget/custom_float_action_botton.dart';
 import '../widget/custom_container_info.dart';
-import '../widget/custom_text_field.dart';
 
 class HomeView extends StatefulWidget {
    const HomeView({super.key});
@@ -38,38 +38,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: CustomAppBarRow(
-            onTap: (){},
-            icon: Icons.search,
-            text: 'Note'),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showModalBottomSheet(
-              backgroundColor: Color(0xFF2c2c2c),
-              context: context, builder: (context) {
-            return SizedBox(
-              child: Padding(
-                padding: const  EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    SizedBox(height: 30,),
-                    CustomTextField(labelText: 'Title',),
-                    SizedBox(height: 15,),
-                    CustomTextField(maxLine: 7,labelText: 'Content'),
-                    Spacer(),
-                    CustomButton(),
-                    SizedBox(height: 25)
-                  ],
-                ),
-              ),
-            );
-          });
-        },
-        shape: CircleBorder(),
-        backgroundColor: Color(0xFF3eb0a0),
-        child: Icon(Icons.add,),),
+      drawer: CustomDrawer(),
+      appBar: buildAppBar(),
+      floatingActionButton: CustomFlatActionButton(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -84,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
                       onTap: navigator,
                       child: CustomContainerInfo(colorMadel: listColor[index])),
                 );
-              },))
+              }))
           ],
         ),
       ),

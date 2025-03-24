@@ -8,7 +8,9 @@ class EditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: CustomAppBarRow(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: CustomAppBarRow(
           onTap: (){},
           icon: Icons.done,
           text: 'Edit Note'),),
@@ -17,7 +19,7 @@ class EditView extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 10,),
-            CustomTextField(labelText: 'Title',),
+           // CustomTextField(labelText: 'Title',),
             SizedBox(height: 10,),
             Expanded(
                 child: TextField(
@@ -25,11 +27,11 @@ class EditView extends StatelessWidget {
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5),
-                        borderSide: BorderSide(color: Colors.white,width: 1.0),
+                        borderSide: BorderSide(color: Colors.blueGrey,width: 1.0),
                     ),
                     focusedBorder:  OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5),
-                      borderSide: BorderSide(color: Colors.white,width: 1.0),
+                      borderSide: BorderSide(color: Colors.blueGrey,width: 1.0),
                     ),
                   )
                 )

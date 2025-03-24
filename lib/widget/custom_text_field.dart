@@ -6,11 +6,13 @@ class CustomTextField extends StatelessWidget {
 
   final int maxLine;
   final String labelText;
+  final void Function(String?) onSaved;
 
   const CustomTextField({
     super.key,
     this.maxLine = 1,
     this.labelText = '',
+    required this.onSaved,
   });
 
 // Decoration Text Field *************
@@ -28,8 +30,9 @@ class CustomTextField extends StatelessWidget {
       style: TextStyle(color: Colors.white),
       maxLines: maxLine,
         decoration: InputDecoration(
-          focusedBorder: buildOutlineInputBorder(color: Colors.greenAccent),
-          enabledBorder: buildOutlineInputBorder(color: Colors.white),
+          focusedBorder: buildOutlineInputBorder(color: Colors.blueGrey),
+          enabledBorder: buildOutlineInputBorder(color:  Colors.blueGrey),
+          border: buildOutlineInputBorder(color: Colors.blueGrey),
           label: CustomText(
             text: labelText,
             color: Colors.greenAccent,
@@ -37,12 +40,14 @@ class CustomTextField extends StatelessWidget {
           )
         ),
       validator: (value) {
-        if(value!.isEmpty){
+        if(value?.isEmpty ?? true){
           return 'ادخل نص';
         }else{
           return null;
         }
       },
+      onSaved: onSaved,
+
     );
   }
 }
