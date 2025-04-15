@@ -13,10 +13,17 @@ class NoteCubit extends Cubit<NoteState> {
   static List <ModelNote> note = [];
 
 
+<<<<<<< HEAD
   Future <void> getNote()async {
     emit(LoadingState());
     try {
        note = await ServiceHive.get();
+=======
+  void getNote() {
+    emit(LoadingState());
+    try {
+      note = ServiceHive.get();
+>>>>>>> 1bf05e125ccd873659776303139dfc2e55cc50b9
       emit(SuccessState(note));
     }
     catch (e) {

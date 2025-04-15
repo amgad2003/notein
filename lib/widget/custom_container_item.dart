@@ -57,7 +57,10 @@ class CustomContainerItem extends StatelessWidget {
                 icon:  IconButton(
                   onPressed: () {
                     context.read<NoteCubit>().deleteNote(index);
+<<<<<<< HEAD
                     context.read<NoteCubit>().getNote();
+=======
+>>>>>>> 1bf05e125ccd873659776303139dfc2e55cc50b9
                   },
                   icon: Icon(Icons.delete,size: 32),color: Colors.black,),
                 color: Colors.black,

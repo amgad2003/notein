@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notein0/Cubits/Favorite_Cubit/favorite_cubit.dart';
 import 'package:notein0/Cubits/Favorite_Cubit/favorite_state.dart';
+<<<<<<< HEAD
 import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
+=======
+>>>>>>> 1bf05e125ccd873659776303139dfc2e55cc50b9
 import 'package:notein0/View/home_view.dart';
 import 'package:notein0/widget/customText.dart';
 import 'package:page_transition/page_transition.dart';
@@ -18,11 +21,19 @@ class FavoriteView extends StatefulWidget {
    // List<ModelNote> favorite = [];
 
 class _FavoriteViewState extends State<FavoriteView> {
+<<<<<<< HEAD
   // @override
   // void initState() {
   //     context.read<FavoriteCubit>().getFavoriteNotes();
   //   super.initState();
   // }
+=======
+  @override
+  void initState() {
+      context.read<FavoriteCubit>().getFavoriteNotes();
+    super.initState();
+  }
+>>>>>>> 1bf05e125ccd873659776303139dfc2e55cc50b9
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +55,7 @@ class _FavoriteViewState extends State<FavoriteView> {
             fontFamily: "Poppins",)
           ,backgroundColor: Colors.transparent,),
         body: BlocBuilder<FavoriteCubit,FavoriteState>(
+<<<<<<< HEAD
           builder: (context, state) {
             if( state is LoadingState){
               return Center(child: CircularProgressIndicator());
@@ -71,6 +83,35 @@ class _FavoriteViewState extends State<FavoriteView> {
             }
             else{return CustomText(text: "dddd");}
           },),
+=======
+            builder: (context, state) {
+              if( state is LoadingState){
+                return Center(child: CircularProgressIndicator());
+              }
+              else if(state is SuccessState){
+                return state.favoriteList.isEmpty
+                    ?Center(child: CustomText(text: "Not Notes Favorite",color: Colors.grey,))
+                    :Column(
+                      children: [
+                        SizedBox(height: 20,),
+                        Expanded(
+                          child: SizedBox(
+                            child: ListView.builder(
+                                              itemCount:  state.favoriteList.length,
+                                              itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 6,horizontal: 20),
+                              child: CustomContainerItem2(modelNote: state.favoriteList[index], index: index),
+                            );
+                                              },),
+                          ),
+                        ),
+                      ],
+                    );
+              }
+              else{return CustomText(text: "dddd");}
+            },),
+>>>>>>> 1bf05e125ccd873659776303139dfc2e55cc50b9
       ),
     );
   }

@@ -25,8 +25,12 @@ void main() async{
           providers: [
             BlocProvider<NoteCubit>(create: (context) => NoteCubit(),),
             BlocProvider<ThemeCubit>(create: (context) => ThemeCubit(),),
+<<<<<<< HEAD
             BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(
                 context.read<NoteCubit>()),),
+=======
+            BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(),),
+>>>>>>> 1bf05e125ccd873659776303139dfc2e55cc50b9
             BlocProvider<SearchCubit>(create: (context) => SearchCubit(),)
           ],
           child:  MyApp(isDark: isDark,)));
@@ -42,8 +46,12 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<NoteCubit>(create: (context) => NoteCubit()..getNote(),),
           BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()..setInitialTheme(isDark),),
+<<<<<<< HEAD
           BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(
               context.read<NoteCubit>()),),
+=======
+          BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(),),
+>>>>>>> 1bf05e125ccd873659776303139dfc2e55cc50b9
           BlocProvider<SearchCubit>(create: (context) =>  SearchCubit(),)
         ],
         child: BlocBuilder<ThemeCubit,bool>(
