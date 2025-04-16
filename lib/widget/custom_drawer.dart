@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notein0/Cubits/Note_cubits/theme_cubit.dart';
+import 'package:notein0/Cubits/ThemeCubit/theme_cubit.dart';
 import 'package:notein0/View/search_view.dart';
 import 'package:page_transition/page_transition.dart';
 import '../View/favorite_view.dart';

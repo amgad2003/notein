@@ -15,8 +15,10 @@ class ServiceHive {
  static Future<void>updateNote(int index , ModelNote update)async{
    await myBox.putAt(index, update);
  }
- static Future<void>deleteNote(int index)async{
-   await myBox.deleteAt(index);
+ static Future<void>deleteNote(ModelNote note)async{
+   // await myBox.deleteAt(index);
+   // await myBox.delete(note);
+   await note.delete();
  }
   static List <ModelNote> search (query){
    if(query.isEmpty){

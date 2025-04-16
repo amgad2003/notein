@@ -5,7 +5,6 @@ import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
 import 'package:notein0/Cubits/Note_cubits/note_state.dart';
 import 'package:notein0/Model/model_note.dart';
 import 'package:notein0/widget/customText.dart';
-import '../Model/model_color.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -19,16 +18,7 @@ class AddNote extends StatefulWidget {
 }
 
 class _AddNoteState extends State<AddNote> {
-  List<ModelColor> listColor =[
-    ModelColor(color: Color(0xFFffcd7a)),
-    ModelColor(color: Color(0xFFe7e896)),
-    ModelColor(color: Color(0xFF69bfd4)),
-    ModelColor(color: Colors.green),
-    ModelColor(color: Color(0xFFffcd7a)),
-    ModelColor(color: Color(0xFFe7e896)),
-    ModelColor(color: Color(0xFF69bfd4)),
-    ModelColor(color: Colors.green),
-  ];
+
   String? title ;
   String? subTitle;
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -44,7 +34,7 @@ class _AddNoteState extends State<AddNote> {
               backgroundColor: Theme.of(context).primaryColor,
 
             ));
-          }else if(state is FaliureState){
+          }else if(state is FailureState){
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: CustomText(text: 'error is ${(state.erorrMessage)}',color: Colors.black ,),backgroundColor: Colors.red,));
           }
         },

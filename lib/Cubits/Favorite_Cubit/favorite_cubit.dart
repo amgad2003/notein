@@ -13,10 +13,15 @@ class FavoriteCubit extends Cubit<FavoriteState>{
   FavoriteCubit(this.noteCubit) : super( InitialState()) {
     // Listen to changes in NoteCubit
     streamSubscription = noteCubit.stream.listen((noteState) {
+
       if (noteState is SuccessState) {
         updateFavoriteList(noteState.listNote);
       }
     });
+    if(noteCubit.state is SuccessState){
+      final successState = noteCubit.state as SuccessState;
+      updateFavoriteList(successState.listNote);
+    }
   }
   static List<ModelNote> favoriteNote = [];
   // static List<ModelNote> note = [];

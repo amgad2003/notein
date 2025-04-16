@@ -75,10 +75,10 @@ class _SearchViewState extends State<SearchView> {
           ),
         body: BlocBuilder<SearchCubit,SearchState>(
             builder: (context, state) {
-              if( state is LoadingState){
+              if( state is SearchLoadingState){
                 return Center(child: CircularProgressIndicator());
               }
-              else if( state is SuccessSate){
+              else if( state is SearchSuccessSate){
                 return  state.listSearch.isEmpty
                     ?Center(child: CustomText(text: "No notes with this name!",color: Colors.grey,))
                     :Column(
@@ -99,7 +99,7 @@ class _SearchViewState extends State<SearchView> {
                       ],
                     );
               }
-              else if(state is FailureState){
+              else if(state is SearchFailureState){
                 return Center(child: CustomText(
                   text:  (state.failure),
                   color: Colors.grey,));

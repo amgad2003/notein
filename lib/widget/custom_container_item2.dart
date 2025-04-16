@@ -72,21 +72,21 @@ class CustomContainerItem2 extends StatelessWidget {
                         text: modelNote.date,
                         fontSize: 14,
                         color: Colors.black.withOpacity(0.4)),
-                    IconButton(
-                      icon: Icon(
-                        modelNote.isFavorite
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                        color: modelNote.isFavorite
-                            ? Colors.black54
-                            : Colors.black54,
-                        size: 25,
-                      ),
-                      onPressed: () {
-                        context.read<FavoriteCubit>().toggleFavorite(index);
-
-                      },
-                    ),
+                    // IconButton(
+                    //   icon: Icon(
+                    //     modelNote.isFavorite
+                    //         ? Icons.favorite
+                    //         : Icons.favorite_border,
+                    //     color: modelNote.isFavorite
+                    //         ? Colors.black54
+                    //         : Colors.black54,
+                    //     size: 25,
+                    //   ),
+                    //   onPressed: () {
+                    //     context.read<FavoriteCubit>().toggleFavorite(index);
+                    //
+                    //   },
+                    // ),
                   ],
                 )),
           ],

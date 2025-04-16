@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
+import 'package:notein0/Cubits/Note_cubits/note_state.dart';
 import 'package:notein0/Cubits/Search_Cubit/search_cubit.dart';
 import 'package:notein0/View/search_view.dart';
 import 'package:notein0/widget/custom_list_bulider.dart';
 import 'package:page_transition/page_transition.dart';
 import '../widget/custom_drawer.dart';
 import '../widget/custom_float_action_botton.dart';
+import '../widget/custom_frist_massage.dart';
 import '../widget/custom_row_app_bar.dart';
 
 class HomeView extends StatefulWidget {
@@ -32,7 +35,13 @@ class _HomeViewState extends State<HomeView> {
                     child: SearchView()));
               },),
       ),
-      floatingActionButton:const CustomFlatActionButton(),
+      floatingActionButton: BlocBuilder<NoteCubit,NoteState>(
+          builder: (context, state) {
+            if(state is SuccessState && state.listNote.isNotEmpty){
+                return CustomFlatActionButton();
+            }else{ return SizedBox();}
+          },
+          ),
       body: Padding(
         padding:const EdgeInsets.symmetric(horizontal: 20),
         child:  Column(

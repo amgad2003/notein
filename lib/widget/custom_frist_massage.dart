@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:notein0/widget/custom_float_action_botton.dart';
 
 import 'customText.dart';
 import 'custom_add_note.dart';
@@ -11,18 +12,18 @@ class FirstMassageToAddNotes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-        onTap: () {
-          showModalBottomSheet(
-              isScrollControlled: true,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              context: context, builder: (context) {
-            return const AddNote();
-          });
-        },
-        child: CustomText(
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CustomFlatActionButton(),
+        SizedBox(height: 15,),
+        CustomText(
           text: "Enter To Add Notes",
+          fontFamily: "Poppins",
           color: Theme.of(context).cardColor,
-          fontSize: 14,));
+          fontSize: 14,),
+      ],
+    );
   }
 }

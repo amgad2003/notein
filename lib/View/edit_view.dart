@@ -51,7 +51,7 @@ class _EditViewState extends State<EditView> {
           title: CustomAppBarRow(
             onTap: (){
               if(title.text.isEmpty&&subTitle.text.isEmpty){
-                context.read<NoteCubit>().deleteNote(widget.index);
+                context.read<NoteCubit>().deleteNote(widget.note);
               }
              else{
                 final note = ModelNote(
