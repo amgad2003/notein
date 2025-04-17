@@ -19,7 +19,7 @@ class FirstMassageToAddNotes extends StatelessWidget {
         CustomFlatActionButton(),
         SizedBox(height: 15,),
         CustomText(
-          text: "Enter To Add Notes",
+          text: "انقر لاضافة الملاحظات ",
           fontFamily: "Poppins",
           color: Theme.of(context).cardColor,
           fontSize: 14,),

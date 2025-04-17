@@ -5,6 +5,7 @@ import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
 import 'package:notein0/Cubits/Note_cubits/note_state.dart';
 import 'package:notein0/Model/model_note.dart';
 import 'package:notein0/widget/customText.dart';
+import 'package:notein0/widget/custom_text_field_title.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -19,8 +20,9 @@ class AddNote extends StatefulWidget {
 
 class _AddNoteState extends State<AddNote> {
 
-  String? title ;
+  // String? title ;
   String? subTitle;
+  final TextEditingController title = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
 
@@ -46,17 +48,29 @@ class _AddNoteState extends State<AddNote> {
               key: formKey,
               autovalidateMode: autoValidateMode,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  const SizedBox(height: 80,),
-                  CustomTextField(
-                      labelText: 'Title',
-                      onSaved: (p0) {
-                        title = p0;
-                      }),
+                  const SizedBox(height: 50,),
+                  // CustomTextField(
+                  //     labelText: 'Title',
+                  //     onSaved: (p0) {
+                  //       title = p0;
+                  //     }),
+                  CustomTextFieldTitle(
+                      title: title,
+                      color: Colors.greenAccent,
+                      enabeledBorder:  OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(color: Colors.blueGrey,width: 1.0),
+                      ),
+                      focuseedBorder:  OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5),
+                        borderSide: BorderSide(color: Colors.blueGrey,width: 1.0),
+                      ),),
                   const SizedBox(height: 15,),
                   CustomTextField(
                     maxLine: 7,
-                    labelText: 'Content',
+                    labelText: 'الموضوع',
                     onSaved: (p0) {
                       subTitle = p0;
                     },),
@@ -66,7 +80,7 @@ class _AddNoteState extends State<AddNote> {
                       if(formKey.currentState!.validate()){
                         formKey.currentState!.save();
                         final note = ModelNote(
-                            title: title!,
+                            title: title.text,
                             subTitle: subTitle!,
                             date: DateTime.now().toString(),
                             color: 0);
@@ -79,6 +93,7 @@ class _AddNoteState extends State<AddNote> {
                         });
                       }
                     },),
+                  SizedBox(height: 10,)
                 ],
               ),
             ),

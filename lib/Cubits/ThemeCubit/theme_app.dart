@@ -8,25 +8,26 @@ ThemeData themeApp(BuildContext context) {
     scaffoldBackgroundColor: BlocProvider
         .of<ThemeCubit>(context)
         .state
-        ? Colors.black
-        : Color(0xFFf2f2f2),
+        ? Color(0xFF121212)
+        : Colors.white,
     appBarTheme: AppBarTheme(
         titleTextStyle: TextStyle(
             color: BlocProvider
                 .of<ThemeCubit>(context)
                 .state
                 ? Color(0xFFf2f2f2)
-                : Color(0xFF303030))),
+                : Colors.grey[900]
+        )),
     primaryColor: BlocProvider
         .of<ThemeCubit>(context)
         .state
-        ? Color(0xFF393939)
+        ? Color(0xFF3a3a3a)
         : Color(0xFFe5e5e5),
     drawerTheme: DrawerThemeData(
       backgroundColor: BlocProvider
           .of<ThemeCubit>(context)
           .state
-          ? Color(0xFF393939)
+          ? Color(0xFF3a3a3a)
           : Color(0xFFf2f2f2),),
     cardColor: BlocProvider
         .of<ThemeCubit>(context)
@@ -39,6 +40,11 @@ ThemeData themeApp(BuildContext context) {
       state
           ? Color(0xFFf2f2f2)
           : Colors.black,),
+    searchViewTheme: SearchViewThemeData(backgroundColor: BlocProvider
+        .of<ThemeCubit>(context)
+        .state
+        ? Colors.grey
+        : Color(0xFFFFF9C4),)
 
   );
 }

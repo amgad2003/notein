@@ -25,6 +25,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       drawer: const CustomDrawer(),
       appBar: AppBar(
+        toolbarHeight: 60,
         iconTheme: Theme.of(context).iconTheme,
           backgroundColor: Colors.transparent,
           title:  CustomAppBarRow(

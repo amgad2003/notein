@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notein0/Model/model_note.dart';
 import 'package:notein0/View/home_view.dart';
+import 'package:notein0/widget/customText.dart';
 import 'package:notein0/widget/custom_icon_back.dart';
 import 'package:page_transition/page_transition.dart';
 import '../Cubits/Note_cubits/note_cubit.dart';
 import '../widget/custom_row_app_bar.dart';
 import '../widget/custom_text_field.dart';
+import '../widget/custom_text_field_title.dart';
 
 class EditView extends StatefulWidget {
   final int index;
@@ -45,6 +47,7 @@ class _EditViewState extends State<EditView> {
       },
       child: Scaffold(
         appBar: AppBar(
+          toolbarHeight: 60,
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
           leading: CustomIconBack(),
@@ -57,7 +60,7 @@ class _EditViewState extends State<EditView> {
                 final note = ModelNote(
                     title: title.text,
                     subTitle: subTitle.text,
-                    date: DateTime.now().toString(),
+                    date:  DateTime.now().toString(),
                     color: 0);
                 context.read<NoteCubit>().updateNote(widget.index, note);
               }
@@ -73,38 +76,28 @@ class _EditViewState extends State<EditView> {
           child: Column(
             children: [
              const SizedBox(height: 10,),
-               TextField(
-                  controller:  title ,
-                  style: TextStyle(color: Theme.of(context).appBarTheme.titleTextStyle!.color??Colors.white),
-                  decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blueGrey,width: 1.0),
-                    ),
-                    focusedBorder:  OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(color: Colors.blueGrey,width: 1.0),
-                    ),
-                  )
-              ),
+               CustomTextFieldTitle(
+                 title: title,
+                 color: Colors.grey,
+                 enabeledBorder: UnderlineInputBorder(
+                     borderSide: BorderSide(
+                         color: Theme.of(context).appBarTheme.titleTextStyle!.color??Colors.white)),
+                 focuseedBorder: UnderlineInputBorder(
+                     borderSide: BorderSide(
+                         color: Theme.of(context).appBarTheme.titleTextStyle!.color??Colors.white)),
+               ),
               const SizedBox(height: 10,),
               Expanded(
                   child: TextField(
                     controller: subTitle,
-                    maxLines: 7,
+                    maxLines: 50,
                       style: TextStyle(color: Theme.of(context).appBarTheme.titleTextStyle!.color??Colors.white),
-                      decoration: InputDecoration(
-                      enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5),
-                          borderSide: const BorderSide(color: Colors.blueGrey,width: 1.0),
-                      ),
-                      focusedBorder:  OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5),
-                        borderSide: const BorderSide(color: Colors.blueGrey,width: 1.0),
+                      decoration: const InputDecoration(
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none
                       ),
                     )
                   )
-              )
             ],
           ),
         ),
@@ -112,3 +105,4 @@ class _EditViewState extends State<EditView> {
     );
   }
 }
+

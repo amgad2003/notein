@@ -34,7 +34,7 @@ class CustomContainerItem2 extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.only(top: 24,bottom: 24,left: 16),
         decoration: BoxDecoration(
-            color: Colors.green,
+            color: Theme.of(context).searchViewTheme.backgroundColor,
             borderRadius: BorderRadius.circular(18)
         ),
         child: Column(

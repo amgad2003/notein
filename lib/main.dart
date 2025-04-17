@@ -27,10 +27,7 @@ void main() async{
           providers: [
             BlocProvider<NoteCubit>(create: (context) => NoteCubit(),),
             BlocProvider<ThemeCubit>(create: (context) => ThemeCubit(),),
-            BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(
-                context.read<NoteCubit>()),),
-            BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(
-                context.read<NoteCubit>()),),
+            BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(context.read<NoteCubit>()),),
             BlocProvider<SearchCubit>(create: (context) => SearchCubit())
           ],
           child:  MyApp(isDark: isDark,)));
@@ -44,17 +41,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
         providers: [
-          BlocProvider<NoteCubit>(create: (context) =>
-          NoteCubit()
-            ..getNote(),),
-          BlocProvider<ThemeCubit>(create: (context) =>
-          ThemeCubit()
-            ..setInitialTheme(isDark),),
-          BlocProvider<FavoriteCubit>(create: (context) =>
-              FavoriteCubit(
-                  context.read<NoteCubit>()),),
-          BlocProvider<FavoriteCubit>(
-            create: (context) => FavoriteCubit(context.read<NoteCubit>()),),
+          BlocProvider<NoteCubit>(create: (context) => NoteCubit()..getNote(),),
+          BlocProvider<ThemeCubit>(create: (context) => ThemeCubit()..setInitialTheme(isDark),),
+          BlocProvider<FavoriteCubit>(create: (context) => FavoriteCubit(context.read<NoteCubit>()),),
           BlocProvider<SearchCubit>(create: (context) => SearchCubit())
         ],
         child: BlocBuilder<ThemeCubit, bool>(

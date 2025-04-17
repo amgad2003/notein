@@ -80,7 +80,7 @@ class _SearchViewState extends State<SearchView> {
               }
               else if( state is SearchSuccessSate){
                 return  state.listSearch.isEmpty
-                    ?Center(child: CustomText(text: "No notes with this name!",color: Colors.grey,))
+                    ?Center(child: CustomText(text: "لا توجد ملاحظات بهذا الاسم",color: Colors.grey,))
                     :Column(
                       children: [
                         SizedBox(height: 20,),
@@ -106,7 +106,7 @@ class _SearchViewState extends State<SearchView> {
               }
               else{
                 return Center(child: CustomText(
-                  text: "Search a note ..",
+                  text: "ابحث عن الملاحظات",
                   color: Colors.grey,));
               }
             },),
