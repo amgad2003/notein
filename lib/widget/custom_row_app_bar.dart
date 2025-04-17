@@ -19,7 +19,7 @@ class CustomAppBarRow extends StatelessWidget {
     return   Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        CustomText(
+         CustomText(
             text: text,
             fontSize: 28,
             fontFamily: "Poppins",

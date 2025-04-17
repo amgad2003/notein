@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
 import 'package:notein0/Cubits/Note_cubits/note_state.dart';
 import 'package:notein0/Model/model_note.dart';
@@ -21,6 +22,7 @@ class AddNote extends StatefulWidget {
 class _AddNoteState extends State<AddNote> {
 
   // String? title ;
+  final String date = DateFormat("yyy-MM-dd -hh:mm a").format(DateTime.now());
   String? subTitle;
   final TextEditingController title = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey();
@@ -76,13 +78,15 @@ class _AddNoteState extends State<AddNote> {
                     },),
                   const SizedBox(height: 15),
                   CustomButton(
+                    text: "اضافة",
+                    color: Colors.greenAccent,
                     onTap: () {
                       if(formKey.currentState!.validate()){
                         formKey.currentState!.save();
                         final note = ModelNote(
                             title: title.text,
                             subTitle: subTitle!,
-                            date: DateTime.now().toString(),
+                            date: date,
                             color: 0);
                         context.read<NoteCubit>().addNote(note);
                         Navigator.pop(context);

@@ -50,7 +50,7 @@ class _SearchViewState extends State<SearchView> {
                   Expanded(
                     child: CupertinoTextField(
                       controller: text,
-                       placeholder: 'Search ....',
+                       placeholder: ' ... بحث ',
                        placeholderStyle: TextStyle(color: Colors.black54),
                        prefix: IconButton(
                            onPressed: () {

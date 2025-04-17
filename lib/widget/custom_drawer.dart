@@ -45,7 +45,7 @@ class CustomDrawer extends StatelessWidget {
           ),
           ListTile(
             title:CustomText(text: "الملاحظات المفضلة",color:  Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),
-            leading: Icon(Icons.favorite_outline_outlined,color:  Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),
+            leading: Icon(Icons.favorite,color:  Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),
             onTap: () {
               Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,child: FavoriteView()));
             },

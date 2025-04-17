@@ -49,7 +49,7 @@ class _FavoriteViewState extends State<FavoriteView> {
             }
             else if(state is FavoriteSuccessState){
               return state.favoriteList.isEmpty
-                  ?Center(child: CustomText(text: "Not Notes Favorite",color: Colors.grey,))
+                  ?Center(child: CustomText(text: "لا توجد ملاحظات مفضلة",color: Colors.grey,))
                   :Column(
                 children: [
                   SizedBox(height: 20,),

@@ -22,7 +22,7 @@ class CustomListBuilder extends StatelessWidget {
           return Expanded(
               child: SizedBox(
                 child: state.listNote.isEmpty
-                    ? Center(child: FirstMassageToAddNotes(),)
+                    ? const Center(child: FirstMassageToAddNotes(),)
                     :ListView.builder(
                   itemCount: state.listNote.length,
                   itemBuilder: (context, index) {
@@ -35,7 +35,7 @@ class CustomListBuilder extends StatelessWidget {
                   },),
           ));
         } else {
-          return Center(child: CustomText(text: 'No Notes'),);
+          return const Center(child: CustomText(text: 'خطأ'),);
         }
       },);
   }

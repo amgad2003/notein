@@ -13,7 +13,7 @@ class CustomFlatActionButton extends StatelessWidget {
       onPressed: () {
         showModalBottomSheet(
           isScrollControlled: true,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            backgroundColor: Theme.of(context).primaryColor,
             context: context,
             builder: (context) {
           return  Padding(

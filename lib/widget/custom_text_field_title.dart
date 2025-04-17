@@ -8,7 +8,7 @@ class CustomTextFieldTitle extends StatelessWidget {
     required this.enabeledBorder,
     required this.focuseedBorder,
     required this.color,
-  });
+  }) ;
 
   final TextEditingController title;
   final InputBorder enabeledBorder;
@@ -18,11 +18,13 @@ class CustomTextFieldTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
         controller:  title ,
+         // textDirection: textDirection,
         style: TextStyle(color: Theme.of(context).appBarTheme.titleTextStyle!.color??Colors.white),
         decoration: InputDecoration(
             label: CustomText(
               text: "العنوان",
-              color: color,),
+              color: color,
+            ),
             enabledBorder: enabeledBorder,
             focusedBorder: focuseedBorder
         )

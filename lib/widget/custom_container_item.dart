@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notein0/Cubits/Favorite_Cubit/favorite_cubit.dart';
 import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
 import 'package:notein0/Model/model_note.dart';
+import 'package:notein0/widget/custom_add_remind.dart';
+import 'package:notein0/widget/custom_button.dart';
 import 'package:page_transition/page_transition.dart';
 import '../View/edit_view.dart';
 import 'customText.dart';
@@ -41,7 +43,7 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
         onTap: () {
           Navigator.push(
               context,
-              PageTransition(type: PageTransitionType.bottomToTop,
+               PageTransition(type: PageTransitionType.bottomToTop,
               child: EditView(index: widget.index,note: widget.modelNote,)));
         },
           onLongPress: () async {
@@ -54,15 +56,15 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
                   tapPosition.dy
               ),
               items: [
-                PopupMenuItem(
-                  value: 'alert',
+                const PopupMenuItem(
+                  value: 'remind',
                   child: Text('ذكرني'),
                 ),
-                PopupMenuItem(
+                const PopupMenuItem(
                     value: "delete",
                     child: Text("حذف"),
                 ),
-                PopupMenuItem(
+                 PopupMenuItem(
                     value: "favorite",
                     child: widget.modelNote.isFavorite
                         ?Text("الغاء المفضلة")
@@ -75,6 +77,13 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
               context.read<NoteCubit>().getNote();
             }if(selected == "favorite"){
               context.read<NoteCubit>().toggleFavorite(widget.index);
+            }if(selected == "remind"){
+              showModalBottomSheet(
+                backgroundColor: Theme.of(context).primaryColor,
+                  context: context,
+                  builder: (context) {
+                    return CustomAddRemind();
+                  },);
             }
           },
         onTapDown: (details) {
@@ -95,7 +104,7 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
         },
 
         child: Container(
-          padding: EdgeInsets.only(top: 16,bottom: 16,left: 16),
+          padding: const EdgeInsets.only(top: 16,bottom: 16,left: 16),
           decoration: BoxDecoration(
               color: Theme.of(context).searchViewTheme.backgroundColor,
               borderRadius: BorderRadius.circular(18)
@@ -113,19 +122,15 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
                   fontSize: 16,
                   color: Colors.black.withOpacity(0.4),
                 ),
-                trailing:IconButton(
-                  onPressed: (){},
-                  icon:  IconButton(
-                    onPressed: () {
-                      context.read<NoteCubit>().deleteNote(widget.modelNote);
-                      context.read<NoteCubit>().getNote();
-                    },
-                    icon: Icon(Icons.delete,size: 32),color: Colors.black,),
-                  color: Colors.black,
-                  ),
+                trailing: IconButton(
+                  onPressed: () {
+                    context.read<NoteCubit>().deleteNote(widget.modelNote);
+                    context.read<NoteCubit>().getNote();
+                  },
+                  icon: Icon(Icons.delete,size: 32),color: Colors.black,),
               ),
               Padding(
-                  padding: const EdgeInsets.only(right: 30),
+                  padding: const EdgeInsets.only(right: 23),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
