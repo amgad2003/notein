@@ -1,12 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
 import 'package:notein0/Cubits/Search_Cubit/search_cubit.dart';
 import 'package:notein0/Cubits/Search_Cubit/search_state.dart';
-import 'package:notein0/Model/model_note.dart';
 import 'package:notein0/View/home_view.dart';
-import 'package:notein0/widget/custom_container_item.dart';
 import 'package:notein0/widget/custom_icon_back.dart';
 import 'package:page_transition/page_transition.dart';
 import '../widget/customText.dart';
@@ -20,9 +17,8 @@ class SearchView extends StatefulWidget {
 }
 
 class _SearchViewState extends State<SearchView> {
-   final TextEditingController text =TextEditingController();
 
-   List<ModelNote> note = [];
+   final TextEditingController text =TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +35,14 @@ class _SearchViewState extends State<SearchView> {
         appBar: AppBar(
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            leading: CustomIconBack(),
+            leading: const CustomIconBack(),
             title:Row(
                 children: [
-                  CustomText(
+                  const CustomText(
                     text: "Search",
                     fontSize: 22,
                     fontFamily: "Poppins",),
-                  SizedBox(width: 10,),
+                  const SizedBox(width: 10,),
                   Expanded(
                     child: CupertinoTextField(
                       controller: text,
@@ -65,7 +61,7 @@ class _SearchViewState extends State<SearchView> {
 
                       },
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9),
+                        borderRadius:  BorderRadius.circular(9),
                         color: Colors.grey.shade500
                       ),
                     )
@@ -76,28 +72,23 @@ class _SearchViewState extends State<SearchView> {
         body: BlocBuilder<SearchCubit,SearchState>(
             builder: (context, state) {
               if( state is SearchLoadingState){
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               else if( state is SearchSuccessSate){
                 return  state.listSearch.isEmpty
-                    ?Center(child: CustomText(text: "لا توجد ملاحظات بهذا الاسم",color: Colors.grey,))
-                    :Column(
-                      children: [
-                        SizedBox(height: 20,),
-                        Expanded(
-                          child: SizedBox(
-                            child: ListView.builder(
-                                              itemCount: state.listSearch.length,
-                                              itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 10),
-                              child: CustomContainerItem2(modelNote: state.listSearch[index], index: index),
-                            );
-                                              },),
-                          ),
-                        ),
-                      ],
-                    );
+                    ? const Center(child: CustomText(
+                      text: "لا توجد ملاحظات بهذا الاسم",
+                      color: Colors.grey,))
+                    : Padding(
+                       padding: const EdgeInsets.only(top: 20,right: 15,left: 15),
+                       child:  ListView.builder(
+                         itemCount: state.listSearch.length,
+                         itemBuilder: (context, index) {
+                           return Padding(
+                             padding: const EdgeInsets.symmetric(vertical: 4,horizontal: 10),
+                             child: CustomContainerItem2(modelNote: state.listSearch[index], index: index),
+                           );
+                         }));
               }
               else if(state is SearchFailureState){
                 return Center(child: CustomText(
@@ -105,7 +96,7 @@ class _SearchViewState extends State<SearchView> {
                   color: Colors.grey,));
               }
               else{
-                return Center(child: CustomText(
+                return const Center(child: CustomText(
                   text: "ابحث عن الملاحظات",
                   color: Colors.grey,));
               }

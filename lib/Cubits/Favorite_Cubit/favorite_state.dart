@@ -10,9 +10,5 @@ final class FavoriteSuccessState extends FavoriteState{
   final List<ModelNote> favoriteList ;
   FavoriteSuccessState(this.favoriteList);
 
-// final class SuccessState extends FavoriteState{
-//   final List<ModelNote> favoriteList ;
-//   SuccessState(this.favoriteList);
-
 }
 

@@ -32,6 +32,7 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
 
   bool isPressed = false ;
   Offset tapPosition = Offset.zero;
+
   @override
   Widget build(BuildContext context) {
     return AnimatedScale(
