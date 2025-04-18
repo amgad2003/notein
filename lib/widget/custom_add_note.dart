@@ -7,6 +7,7 @@ import 'package:notein0/Cubits/Note_cubits/note_state.dart';
 import 'package:notein0/Model/model_note.dart';
 import 'package:notein0/widget/customText.dart';
 import 'package:notein0/widget/custom_text_field_title.dart';
+import 'package:uuid/uuid.dart';
 import 'custom_button.dart';
 import 'custom_text_field.dart';
 
@@ -87,8 +88,10 @@ class _AddNoteState extends State<AddNote> {
                             title: title.text,
                             subTitle: subTitle!,
                             date: date,
+                            id: Uuid().v4(),
                             color: 0);
                         context.read<NoteCubit>().addNote(note);
+                        // context.read<NoteCubit>().addNoteAndPosition(note);
                         Navigator.pop(context);
                       }else{
                         autoValidateMode =AutovalidateMode.always ;

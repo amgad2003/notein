@@ -22,13 +22,14 @@ class ModelNoteAdapter extends TypeAdapter<ModelNote> {
       date: fields[2] as String,
       color: fields[3] as int,
       isFavorite: fields[4] as bool,
+      id: fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, ModelNote obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class ModelNoteAdapter extends TypeAdapter<ModelNote> {
       ..writeByte(3)
       ..write(obj.color)
       ..writeByte(4)
-      ..write(obj.isFavorite);
+      ..write(obj.isFavorite)
+      ..writeByte(5)
+      ..write(obj.id);
   }
 
   @override

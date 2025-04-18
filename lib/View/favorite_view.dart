@@ -43,8 +43,10 @@ class _FavoriteViewState extends State<FavoriteView> {
               return const Center(child: CircularProgressIndicator());
             }else if(state is FavoriteSuccessState){
               return state.favoriteList.isEmpty
-                  ? const CustomText(text: "لا توجد ملاحظات")
-                  :Padding(
+                  ? Center(child: const CustomText(
+                  text: "لا توجد ملاحظات",
+                  color: Colors.grey,))
+                  : Padding(
                   padding:const EdgeInsets.only(top: 20,left: 15,right: 15),
                   child: ListView.builder(
                       itemCount: state.favoriteList.length,

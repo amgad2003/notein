@@ -73,9 +73,11 @@ class _EditViewState extends State<EditView> {
                 final note = ModelNote(
                     title: title.text,
                     subTitle: subTitle.text,
+                    id: widget.note.id,
                     date:  date,
                     color: 0);
                 context.read<NoteCubit>().updateNote(widget.index, note);
+                // context.read<NoteCubit>().addNoteAndPosition(note);
               }
               Navigator.pushAndRemoveUntil(
                   context,

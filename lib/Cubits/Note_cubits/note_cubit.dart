@@ -15,10 +15,6 @@ class NoteCubit extends Cubit<NoteState> {
 
 
 
-  // Future <void> getNote()async {
-  //   emit(LoadingState());
-  //   try {
-  //     note = await ServiceHive.get();
       Future<void> getNote()async {
         emit(LoadingState());
         try {
@@ -41,11 +37,14 @@ class NoteCubit extends Cubit<NoteState> {
         }
       }
 
-      Future<void> addNote(ModelNote note) async {
+      Future<void> addNote(ModelNote noteIn) async {
         emit(LoadingState());
         try {
-          await ServiceHive.addNote(note);
-          getNote();
+          await ServiceHive.addNote(noteIn);
+          note =  ServiceHive.get();
+          note.removeWhere((n) => n.id == noteIn.id);
+          note.insert(0, noteIn);
+          emit(SuccessState(note));
         }
         catch (e) {
           emit(FailureState(e.toString()));
@@ -56,7 +55,11 @@ class NoteCubit extends Cubit<NoteState> {
         emit(LoadingState());
         try {
           await ServiceHive.updateNote(index, update);
-          getNote();
+          // getNote();
+          note = ServiceHive.get();
+          note.removeWhere((n) => n.id == update.id,);
+          note.insert(0, update);
+          emit(SuccessState(note));
         }
         catch (e) {
           emit(FailureState(e.toString()));
@@ -64,9 +67,15 @@ class NoteCubit extends Cubit<NoteState> {
       }
 
 
-      void toggleFavorite(int index) {
-        note[index].isFavorite = !note[index].isFavorite;
-        note[index].save();
+      void toggleFavorite(ModelNote noteIn) {
+        for( var x in note){
+
+          if(x.id == noteIn.id){
+           x.isFavorite =! noteIn.isFavorite;
+           x.save();
+          }
+          // getNote();
+        }
         emit(SuccessState(note));
       }
 }

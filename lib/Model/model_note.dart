@@ -14,14 +14,16 @@ class ModelNote extends HiveObject{
   final int color ;
   @HiveField(4)
   bool isFavorite;
+  @HiveField(5)
+  final String id;
 
   ModelNote({
-
     required this.title,
     required this.subTitle,
     required this.date,
     required this.color,
     this.isFavorite = false,
+    required this.id,
     
   });
 }

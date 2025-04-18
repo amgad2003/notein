@@ -1,13 +1,9 @@
 
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:notein0/Cubits/Favorite_Cubit/favorite_cubit.dart';
 import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
 import 'package:notein0/Model/model_note.dart';
 import 'package:notein0/widget/custom_add_remind.dart';
-import 'package:notein0/widget/custom_button.dart';
 import 'package:page_transition/page_transition.dart';
 import '../View/edit_view.dart';
 import 'customText.dart';
@@ -77,7 +73,7 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
               context.read<NoteCubit>().deleteNote(widget.modelNote);
               context.read<NoteCubit>().getNote();
             }if(selected == "favorite"){
-              context.read<NoteCubit>().toggleFavorite(widget.index);
+              context.read<NoteCubit>().toggleFavorite(widget.modelNote);
             }if(selected == "remind"){
               showModalBottomSheet(
                 backgroundColor: Theme.of(context).primaryColor,
@@ -150,7 +146,7 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
                           size: 25,
                         ),
                         onPressed: () {
-                          context.read<NoteCubit>().toggleFavorite(widget.index);
+                          context.read<NoteCubit>().toggleFavorite(widget.modelNote);
                         },
                       ),
                     ],
