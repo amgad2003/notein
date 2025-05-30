@@ -15,7 +15,7 @@ ThemeData themeApp(BuildContext context) {
             color: BlocProvider
                 .of<ThemeCubit>(context)
                 .state
-                ? Color(0xFFf2f2f2)
+                ? Color(0xFFc7c7c7)
                 : Colors.grey[900]
         )),
     primaryColor: BlocProvider
@@ -43,8 +43,8 @@ ThemeData themeApp(BuildContext context) {
     searchViewTheme: SearchViewThemeData(backgroundColor: BlocProvider
         .of<ThemeCubit>(context)
         .state
-        ? Colors.grey
-        : Color(0xFFFFF9C4),)
+        ? Colors.grey.shade900
+        : Color(0xFFe5e5e5),)
 
   );
 }

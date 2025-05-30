@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notein0/Cubits/Note_cubits/note_cubit.dart';
 import 'package:notein0/Model/model_note.dart';
-import 'package:notein0/widget/custom_add_remind.dart';
 import 'package:page_transition/page_transition.dart';
 import '../View/edit_view.dart';
 import 'customText.dart';
@@ -27,7 +26,6 @@ class CustomContainerItem extends StatefulWidget {
 class _CustomContainerItemState extends State<CustomContainerItem> {
 
   bool isPressed = false ;
-  Offset tapPosition = Offset.zero;
 
   @override
   Widget build(BuildContext context) {
@@ -43,51 +41,10 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
                PageTransition(type: PageTransitionType.bottomToTop,
               child: EditView(index: widget.index,note: widget.modelNote,)));
         },
-          onLongPress: () async {
-            final selected = await showMenu(
-              context: context,
-              position: RelativeRect.fromLTRB(
-                  tapPosition.dx,
-                  tapPosition.dy,
-                  tapPosition.dx,
-                  tapPosition.dy
-              ),
-              items: [
-                const PopupMenuItem(
-                  value: 'remind',
-                  child: Text('ذكرني'),
-                ),
-                const PopupMenuItem(
-                    value: "delete",
-                    child: Text("حذف"),
-                ),
-                 PopupMenuItem(
-                    value: "favorite",
-                    child: widget.modelNote.isFavorite
-                        ?Text("الغاء المفضلة")
-                        :Text("المفضلة"),)
-              ],
-            );
-
-            if (selected == "delete") {
-              context.read<NoteCubit>().deleteNote(widget.modelNote);
-              context.read<NoteCubit>().getNote();
-            }if(selected == "favorite"){
-              context.read<NoteCubit>().toggleFavorite(widget.modelNote);
-            }if(selected == "remind"){
-              showModalBottomSheet(
-                backgroundColor: Theme.of(context).primaryColor,
-                  context: context,
-                  builder: (context) {
-                    return CustomAddRemind();
-                  },);
-            }
-          },
         onTapDown: (details) {
           setState(() {
             isPressed = true;
           });
-          tapPosition = details.globalPosition ;
         },
         onTapUp: (details) {
           setState(() {
@@ -112,37 +69,44 @@ class _CustomContainerItemState extends State<CustomContainerItem> {
               ListTile(
                 title: CustomText(
                     text: widget.modelNote.title,
-                    fontSize: 26),
+                    fontSize: 20,
+                    color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black
+                ),
                 subtitle: CustomText(
                   text: widget.modelNote.subTitle,
                   maxLine: 1,
                   fontSize: 16,
-                  color: Colors.black.withOpacity(0.4),
+                  color: Colors.grey.shade600,
                 ),
                 trailing: IconButton(
                   onPressed: () {
                     context.read<NoteCubit>().deleteNote(widget.modelNote);
                     context.read<NoteCubit>().getNote();
                   },
-                  icon: Icon(Icons.delete,size: 32),color: Colors.black,),
+                  icon: Icon(
+                      Icons.delete,size: 30
+                  ),
+                    color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black
+                ),
               ),
               Padding(
-                  padding: const EdgeInsets.only(right: 23),
+                  padding: const EdgeInsets.only(right: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       CustomText(
                         text: widget.modelNote.date,
                         fontSize: 14,
-                        color: Colors.black.withOpacity(0.4)),
+                        color:Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black
+              ),
                       IconButton(
                         icon: Icon(
                           widget.modelNote.isFavorite
                               ? Icons.favorite
                               : Icons.favorite_border,
                           color: widget.modelNote.isFavorite
-                              ? Colors.black54
-                              : Colors.black54,
+                              ? Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black
+                              : Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,
                           size: 25,
                         ),
                         onPressed: () {

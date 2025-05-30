@@ -23,7 +23,6 @@ class CustomAppBarRow extends StatelessWidget {
             text: text,
             fontSize: 28,
             fontFamily: "Poppins",
-
             color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black
         ),
         InkWell(
@@ -31,9 +30,11 @@ class CustomAppBarRow extends StatelessWidget {
           child: Container(
             padding:const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             decoration: BoxDecoration(
-              boxShadow: [BoxShadow(color: Colors.black38,blurRadius: 3,offset: Offset(2, 5))],
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(15),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black38,blurRadius: 3,offset: Offset(2, 5))],
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(15),
             ),
             child: Icon(
               icon,

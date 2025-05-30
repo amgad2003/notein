@@ -3,16 +3,29 @@ import 'package:flutter/material.dart';
 import 'customText.dart';
 import 'custom_button.dart';
 
-class CustomAddRemind extends StatelessWidget {
+class CustomAddRemind extends StatefulWidget {
   const CustomAddRemind({
     super.key,
   });
 
   @override
+  State<CustomAddRemind> createState() => _CustomAddRemindState();
+}
+
+class _CustomAddRemindState extends State<CustomAddRemind> {
+
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+    return Padding(
+      padding: const EdgeInsets.symmetric( horizontal: 22),
+      child: Container(
+          decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: const BorderRadius.vertical(top: Radius.circular(22))
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -21,6 +34,7 @@ class CustomAddRemind extends StatelessWidget {
                   text: "تعيين التاريخ والوقت",
                   fontSize: 18,
                   color: Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),
+
                 Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,6 +55,8 @@ class CustomAddRemind extends StatelessWidget {
                 ),
                 SizedBox( height: 20,)
               ],
-            )));
+            ),
+          )),
+    );
   }
 }

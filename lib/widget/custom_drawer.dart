@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notein0/Cubits/ThemeCubit/theme_cubit.dart';
+import 'package:notein0/View/alerts_view.dart';
 import 'package:notein0/View/search_view.dart';
 import 'package:page_transition/page_transition.dart';
 import '../View/favorite_view.dart';
@@ -48,6 +49,17 @@ class CustomDrawer extends StatelessWidget {
             leading: Icon(Icons.favorite,color:  Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),
             onTap: () {
               Navigator.push(context, PageTransition(type: PageTransitionType.bottomToTop,child: FavoriteView()));
+            },
+          ),
+          ListTile(
+            title: CustomText(
+              text:'التنبيهات',
+              color:  Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),
+            leading: Icon(Icons.access_alarm,color:  Theme.of(context).appBarTheme.titleTextStyle?.color ?? Colors.black,),
+            onTap: () {
+              Navigator.push(context, PageTransition(
+                  type: PageTransitionType.bottomToTop,
+                  child: AlertsView()));
             },
           )
         ],

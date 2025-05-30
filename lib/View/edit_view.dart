@@ -6,6 +6,7 @@ import 'package:notein0/View/home_view.dart';
 import 'package:notein0/widget/customText.dart';
 import 'package:notein0/widget/custom_icon_back.dart';
 import 'package:page_transition/page_transition.dart';
+import '../Cubits/DateTime_Cubit/date_time_cubit.dart';
 import '../Cubits/Note_cubits/note_cubit.dart';
 import '../widget/custom_row_app_bar.dart';
 import '../widget/custom_text_field_title.dart';
@@ -26,10 +27,35 @@ class EditView extends StatefulWidget {
 class _EditViewState extends State<EditView> {
   final TextEditingController title = TextEditingController();
   final TextEditingController subTitle=TextEditingController();
-   late TextDirection textDirection = TextDirection.LTR ;
+  late TextDirection textDirection = TextDirection.LTR ;
   final String date = DateFormat("yyy-MM-dd -hh:mm a").format(DateTime.now());
 
-   @override
+  Future<void> pickDateAndTime(BuildContext context) async {
+    final cubit = context.read<ReminderCubit>();
+
+    final date = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime.now(),
+      lastDate: DateTime(2100),
+    );
+
+    if (date != null) {
+      cubit.setDate(date);
+
+      final time = await showTimePicker(
+        context: context,
+        initialTime: TimeOfDay.now(),
+      );
+
+      if (time != null) {
+        cubit.setTime(time);
+      }
+    }
+  }
+
+
+  @override
   void initState() {
     super.initState();
        title.text= widget.note.title;
@@ -85,7 +111,22 @@ class _EditViewState extends State<EditView> {
                   (route) =>  false);
             },
             icon: Icons.done,
-            text: 'Edit Note')
+            text: 'Edit Note'),
+          actions: [
+            PopupMenuButton(
+              iconColor: Theme.of(context).cardColor,
+              onSelected: (value) {
+                if(value == "alert"){
+                  pickDateAndTime(context);
+                }
+              },
+              itemBuilder: (context) {
+                  return [
+                    PopupMenuItem(
+                        value: "alert",
+                        child: CustomText(text: "ذكرني"),)];
+                },)
+          ],
           ),
         body: Padding(
           padding: const  EdgeInsets.symmetric(horizontal: 20),

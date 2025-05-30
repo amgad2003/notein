@@ -12,6 +12,7 @@ class ThemeCubit extends Cubit<bool>{
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool("isDark", isDark);
   }
+
   // void loadTheme()async{
   //
   //   emit(isDark);
